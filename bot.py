@@ -31,10 +31,9 @@ def get_server_info():
     servers_url = f"https://api.emergency-hamburg.com/public/servers"
     response = requests.get(servers_url).json()
 
-    # Step 2: Search for the server with the matching join code
     target_server = None
     for server in response:
-        if server.get("ownerId") == owner_id:  # Join codes are case-insensitive in some cases
+        if server.get("ownerId") == owner_id:
             target_server = server
             break
     return target_server
